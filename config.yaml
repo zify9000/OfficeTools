@@ -1,0 +1,21 @@
+server:
+  host: "127.0.0.1"
+  port: 50000
+  debug: false
+
+paths:
+  uploads: "uploads"
+  outputs: "outputs"
+  models: "models"
+
+asr:
+  model_size: "small"
+  language: "zh"
+  model_path: "models/whisper"
+
+ocr:
+  lang: "ch"
+  model_path: "models/paddleocr"
+
+pdf:
+  dpi: 300
