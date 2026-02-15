@@ -105,7 +105,8 @@ async def convert_pdf(
         raise HTTPException(status_code=400, detail="请上传PDF文件")
     
     upload_dir = config.paths["uploads"]
-    output_dir = config.paths["outputs"]
+    output_dir = os.path.join(config.paths["outputs"], "pdf")
+    os.makedirs(output_dir, exist_ok=True)
     
     try:
         pdf_path = await save_upload_file(file, upload_dir)
@@ -158,7 +159,8 @@ async def convert_pdf_async(
         )
     
     upload_dir = config.paths["uploads"]
-    output_dir = config.paths["outputs"]
+    output_dir = os.path.join(config.paths["outputs"], "pdf")
+    os.makedirs(output_dir, exist_ok=True)
     
     pdf_path = await save_upload_file(file, upload_dir)
     
@@ -197,7 +199,7 @@ async def get_task_status(task_id: str):
 @router.get("/download/{filename}")
 async def download_result(filename: str):
     """下载转换结果文件"""
-    output_dir = config.paths["outputs"]
+    output_dir = os.path.join(config.paths["outputs"], "pdf")
     file_path = os.path.join(output_dir, filename)
     
     if not os.path.exists(file_path):

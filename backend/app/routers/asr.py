@@ -53,7 +53,8 @@ async def process_asr_task(task_id: str, audio_path: str, language: Optional[str
         
         tasks_store[task_id]["progress"] = 0.8
         
-        output_dir = config.paths["outputs"]
+        output_dir = os.path.join(config.paths["outputs"], "asr")
+        os.makedirs(output_dir, exist_ok=True)
         output_file = os.path.join(output_dir, f"{task_id}.txt")
         
         async with aiofiles.open(output_file, 'w', encoding='utf-8') as f:
@@ -106,7 +107,8 @@ async def transcribe_audio(
         
         result = await asr_service.transcribe_async(audio_path, language)
         
-        output_dir = config.paths["outputs"]
+        output_dir = os.path.join(config.paths["outputs"], "asr")
+        os.makedirs(output_dir, exist_ok=True)
         output_file = os.path.join(output_dir, f"{uuid.uuid4()}.txt")
         
         async with aiofiles.open(output_file, 'w', encoding='utf-8') as f:

@@ -65,7 +65,7 @@ class ConfigManager:
     
     def _resolve_paths(self) -> None:
         """解析并创建路径"""
-        base_path = Path(__file__).parent.parent.parent.parent
+        base_path = Path(__file__).parent.parent.parent
         
         for key, path in self._config.get("paths", {}).items():
             resolved_path = base_path / path
