@@ -1,6 +1,8 @@
 # OfficeTools - 离线办公助手
 
 windows一键包，离线环境下的办公工具集成，支持语音转文字、PDF转Word、图片OCR等功能。
+前置工作，需联网配置环境及模型，重点关注ptyhon/models目录，后可直接迁移到离线环境运行。
+GLM-5/Trae，YYDS。
 
 ## 项目特点
 
